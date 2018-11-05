@@ -172,10 +172,19 @@ let preQuestions =
         }];
 
 let next = document.querySelector('.next');
+let back = document.querySelector('.back');
 
 let question = document.querySelector('.question');
 let answers = document.querySelectorAll('.list-group-item');
 let index = 0;
+let points = 0;
+
+for(let i=0; i<answers.length; i++){
+    answers[i].addEventListener('click', function (event) {
+        if(event.target.innerHTML === preQuestions[index].correct_answer) {
+            points++;
+     } };
+}
 
 function setQuestion(index) {
     question.innerHTML = preQuestions[index].question;
@@ -192,3 +201,11 @@ next.addEventListener('click', function () {
     index++;
     setQuestion(index);
 });
+
+back.addEventListener('click', function() {
+   index--;
+   setQuestion(index); 
+});
+
+
+
